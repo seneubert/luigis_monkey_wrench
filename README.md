@@ -27,7 +27,3 @@ Run the example script (or one that you have already)
 ````bash
 python root_example.py --local-scheduler MyWorkFlow
 ````
-
-## Current Status: Experimental
-
-***Use on your own risk only!***
