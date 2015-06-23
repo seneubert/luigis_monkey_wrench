@@ -1,4 +1,4 @@
-# Luigi's Monkey Wrench
+# Luigi's Monkey Wrench -- HEP Edition
 
 This is a small library (50 LOC exactly, as of Feb 12) that allows to easily write [Luigi]() workflows that use a lot of shell commands
 (which is common e.g. in HEP or bioinformatics). Examples using ROOT are given. 
