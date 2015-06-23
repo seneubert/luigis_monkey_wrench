@@ -1,39 +1,14 @@
 # Luigi's Monkey Wrench
 
-This is a small library (50 LOC exactly, as of Feb 12) that intends to make writing [Luigi]() workflows that use a lot of shell commands
-(which is common e.g. in HEP or bioinformatics) a tad easier by allowing to define workflow tasks with a simple shell command pattern, and
-dependencies by using a simple single-assignment patter for specifying how tasks inputs depend on each other's outputs, like so:
+This is a small library (50 LOC exactly, as of Feb 12) that allows to easily write [Luigi]() workflows that use a lot of shell commands
+(which is common e.g. in HEP or bioinformatics). Examples using ROOT are given. 
 
-````python
-import luigi
-from luigis_monkey_wrench import *
-
-class MyWorkFlow(WorkflowTask):
-    def requires(self):
-		# Create some tasks
-        hejer = shell('echo hej > <o:hejfile:hej.txt>')
-        fooer = shell('cat <i:hejfile> | sed "s/hej/foo/g" > <o:foofile:<i:hejfile:.txt|.foo>>')
-
-		# Connect them together
-        fooer.inports['hejfile'] = hejer.outport('hejfile')
-
-		# Return the last one in the chain
-        return fooer
-
-# Make this a runnable script, and leave control to luigi
-if __name__ == '__main__':
-    luigi.run()
-````
-
-Short and neat, ain't it?
-
-````
-Now run this (as usual with luigi tasks) like this:
-````bash
-python workflow_example.py --local-scheduler MyWorkFlow
-````
+Goal for this fork: A full suite of tools to make LHCb analysis workflows.
 
 ## Quick start
+
+This demo runs a small phasespace simulation, divided into 5 jobs; It 
+h-adds the output into an ntuple and finally produces a plot from the ntuple. 
 
 Install the dependencies, luigi (and optionally tornado):
 ````bash
